@@ -1,0 +1,84 @@
+{% extends 'userhome.html' %}
+
+
+{% block header_text %}
+
+<style>
+
+#category_main
+{
+    min-height:300px;
+    width:300px;
+    
+}
+.category_main_part
+{
+    height:100px;
+    width:100px;
+    
+    float:left;
+}
+
+</style>
+
+<center>
+    <br><br><br><br><br><br>
+<h2><strong>Sub Categories to search Bidding Products >> {{catnm}}</strong></h2>
+<br>
+
+<div id="category_main">
+    
+    {% for row in sclist %}
+    <a href="/user/viewbiddingproducts/?scnm={{row.subcatnm}}">
+    <div class="category_main_part">
+        <br>
+        
+        <img src="{{media_url}}{{row.subcaticonnm}}" height="50" width="80"/>
+        <br>
+        <b>{{row.subcatnm}}</b>
+    </div>
+    </a>
+    {% endfor %}
+    
+</div>
+
+</center>
+{% endblock %}
+
+{% block header_image %}
+
+{% endblock %}
+
+{% block footer %}
+    <footer>
+
+        <center>
+         <h4><u>Categories</u></h4>   
+        <div class="col-lg-5 col-md-12 col-sm-12">
+            <ul >
+                <li><a href="/user/subcatviewproducts/?catnm=portrait">@Portraits</a></li>
+                <li><a href="/user/subcatviewproducts/?catnm=painting">@Paintings</a></li>
+                <li><a href="/user/subcatviewproducts/?catnm=sculpture">@Sculptures</a></li>
+                
+            </ul>
+        </div>
+        </center>
+
+        <center>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    
+                        <b><strong>
+                    <p class="copyright">Copyright &copy; 2020-2021, Art Gallery </p>
+                        <p>Designed And Developed By: Ajinkya Pradhan</p>
+                    </p>
+                        </strong></b>
+                    
+                </div>
+                
+            </div>
+        </div>
+        </center>
+    </footer>
+    {% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'userhome.html' %}
+
+
+
+{% block header_text %}
+<center>
+    <h3>Bidding Summary</h3>
+    <br>
+    <br>
+    <table border="2" cellspacing="7" cellpadding="7">
+        <tr>
+            <th>BiddingID</th>
+            <th>BiddingPrice</th>
+            <th>UserID</th>
+            <th>Info</th>
+        </tr>
+
+        {% for row in bDetails %}
+
+        <tr>
+            <td>{{row.bid}}</td>
+            <td>{{row.bprice}}</td>
+            <td>{{row.uid}}</td>
+            <td>{{row.dt}}</td>
+            
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</center>
+{% endblock %}
+
+{% block header_image %}
+{% endblock %}
+
+{% block footer %}
+    <footer>
+
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    
+                        <b><strong>
+                    <p class="copyright">Copyright &copy; 2020-2021, Art Gallery </p>
+                        <p>Designed And Developed By: Ajinkya Pradhan</p>
+                    </p>
+                        </strong></b>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </footer>
+    {% endblock %}

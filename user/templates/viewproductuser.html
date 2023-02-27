@@ -1,0 +1,79 @@
+{% extends 'userhome.html' %}
+
+{% block header_text %}
+
+<center>
+<h3>View & Manage Products Here!!!</h3>  
+
+<br><br>
+    
+<table>
+<tr>
+    <th>PID</th>
+    <th><center>Title</center></th>
+    <th><center>Catnm</center></th>
+    <th><center>Base price</center></th>
+    <th><center>Description</center></th>
+    <th><center>Product Icons</center></th>
+    <th><center>Action</th>    
+    </tr>    
+    
+    {% for row in pDetails %}
+    <tr><td colspan="20"><hr></td></tr>
+    <tr>
+        <center>
+    <td><center>{{row.pid}}</center></td>
+    <td><center>{{row.title}}</center></td>    
+    <td><center>{{row.subcatnm}}</center></td>
+    <td><center>{{row.baseprice}}</center></td>
+    <td><center>{{row.description}}</center></td>
+    <td>
+    <img src="{{media_url}}{{row.file1}}" height="50" width="50" />
+    &nbsp;&nbsp;
+    <img src="{{media_url}}{{row.file2}}" height="50" width="50" />
+    &nbsp;&nbsp;
+    <img src="{{media_url}}{{row.file3}}" height="50" width="50" />
+    &nbsp;&nbsp;
+    <img src="{{media_url}}{{row.file4}}" height="50" width="50" />
+    &nbsp;&nbsp;
+    
+    </td>
+
+    <td>
+        {% if row.bstatus %}
+        <font color="yellow">Product Verified</font>
+        {% else %}
+        <form action={{paypalURL}} method="post">
+            <!-- Identify your business so that you can collect the payments. -->
+            <input type="hidden" name="business" value={{paypalID}}>
+            
+            <!-- Specify a Buy Now button. -->
+            <input type="hidden" name="cmd" value="_xclick">
+            
+            <!-- Specify details about the item that buyers will purchase. -->
+            <input type="hidden" name="item_name" value={{row.pid}}>
+            <input type="hidden" name="item_number" value=1>
+            <input type="hidden" name="amount" value="200">
+            <input type="hidden" name="currency_code" value="USD">
+            
+            <!-- Specify URLs -->
+            <input type='hidden' name='cancel_return' value=http://localhost:8000/user/cancel/ >
+            <input type='hidden' name='return' value=http://localhost:8000/user/payment/?pid={{row.pid}}&price=200&uid={{sunm}} >
+            
+            <!-- Display the payment button. -->
+            <input type="image" name="submit" border="0"
+            src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
+            <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+        </form>
+        {% endif %}
+    </td>
+
+    </center>
+    </tr>
+
+{% endfor %}
+</table>
+
+</center>
+
+{% endblock %}

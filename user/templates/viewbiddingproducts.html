@@ -1,0 +1,62 @@
+{% extends 'userhome.html' %}
+
+{% block header_text %}
+<center>
+    <h4>View Bidding Products</h4>   
+    <br><br><br>
+    
+    <table border="2" cellspacing="7" cellpadding="7">
+    <tr>
+    <th>ProductID</th>
+    <th>Title</th>    
+    <th>Description</th>
+    <th>BasePrice</th>
+    <th>Images</th>
+    <th>UserID</th>
+    <th>Action</th>
+    </tr>
+    
+    {% for row in pDetails %}
+    <tr>
+    <td>{{row.pid}}</td>
+    <td>{{row.title}}</td>
+    <td>{{row.description}}</td>
+    <td>{{row.baseprice}}</td>
+    <td>
+    <img src="{{media_url}}{{row.file1}}" height="70" width="70" />
+    <img src="{{media_url}}{{row.file2}}" height="70" width="70" />
+    <br>
+    <img src="{{media_url}}{{row.file3}}" height="70" width="70" />
+    <img src="{{media_url}}{{row.file4}}" height="70" width="70" />    
+    </td>    
+    <td>{{row.uid}}</td>
+    <td><a href="/user/bidproduct/?pid={{row.pid}}">Bid Product</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    
+    </center>
+
+{% endblock %}
+
+
+
+{% block footer %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    
+                        <b><strong>
+                    <p class="copyright">Copyright &copy; 2020-2021, Art Gallery </p>
+                        <p>Designed And Developed By: Ajinkya Pradhan</p>
+                    </p>
+                        </strong></b>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </footer>
+    {% endblock %}

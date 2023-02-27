@@ -1,0 +1,62 @@
+{% extends 'userhome.html' %}
+
+
+
+{% block header_text %}
+<center>
+    <h3>Bid product here</h3>
+    
+    {% if s %}
+    <br>
+    
+    <form method="post" action="/user/mybid/">
+    {% csrf_token %}
+    <label>PID&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>    
+    <input type="text" name="pid" value="{{pDetails.0.pid}}" readonly/>
+    <br><br>
+    <label>Base Price&nbsp; &nbsp;</label>    
+    <input type="text" name="bprice" value="{{pDetails.0.baseprice}}" readonly/>
+    <br><br>
+    <label>Current Price</label>    
+    <input type="text" name="cprice" value="{{cprice}}" readonly/>
+    <br><br>
+    <label>Enter Your Bidding Price</label>    
+    <input type="text" name="bprice" value=""/>
+    <br><br>
+    <input type="submit" value="Bid Product"/>  
+    </form>
+    
+    {% else %}
+    <br>
+    <h1>Bidding Completed</h1>
+    <a href="/user/viewbid/?pid={{pDetails.0.pid}}">Click on the link below to view status</a>
+    {% endif %}
+    
+    </center>
+{% endblock %}
+
+{% block header_image %}
+{% endblock %}
+
+{% block footer %}
+    <footer>
+
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    
+                        <b><strong>
+                    <p class="copyright">Copyright &copy; 2020-2021, Art Gallery </p>
+                        <p>Designed And Developed By: Ajinkya Pradhan</p>
+                    </p>
+                        </strong></b>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </footer>
+    {% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'master_template.html' %}
+
+{% block header_text_text %}    
+<h2><strong>LOGIN HERE!!!!!!</strong></h2>
+
+<font color="red">{{msg}}</font>
+<form method="post" action="/login/">
+{% csrf_token %}
+<table cellspacing="5" cellpadding="5">
+
+    <br><br>
+   
+
+    <tr>
+        <td>UserName &nbsp;</td>
+        <td><input type="email" name="email" placeholder="Enter username/email"/></td>
+    </tr>
+
+    <tr>
+        <td>Password &nbsp;</td>
+        <td><input type="password" name="password" placeholder="Enter password"/></td>
+    </tr>
+    
+    
+    <tr>
+        
+        <td colspan="2">
+        <center>
+            <br>
+        <input type="submit" name="sub" value="Login"/></td>
+        </center>
+    </tr>
+    
+
+</table>
+</form>
+
+{% endblock %}

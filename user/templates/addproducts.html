@@ -1,0 +1,136 @@
+{% extends 'userhome.html' %}
+
+
+
+</style>    
+
+{% block header_text %}
+
+{% endblock %}
+
+{% block header_image %}
+<br><br><br>
+
+
+
+<center>
+<script>
+
+function showSubcategory(cnm)
+{
+    var xhttp=new XMLHttpRequest()
+    xhttp.open("GET","/user/showSubCategory/?cnm="+cnm,true)
+    xhttp.send()
+
+    xhttp.onreadystatechange=function()
+    {
+        if(xhttp.readyState==4 && xhttp.status==200)
+        {
+            document.getElementById("response").innerHTML=xhttp.responseText
+
+        }
+    }
+}
+</script>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<a href="/user/viewproductuser/">View & Manage Products</a>
+
+<h3><strong>Add Products Here!!!!!!!</strong></h3>
+<br>
+
+
+
+<font color="red">{{msg}}</font>
+<form form enctype="multipart/form-data" method="post" action="/user/addproducts/">
+{% csrf_token %}
+<table cellspacing="20" cellpadding="10">
+    
+       
+    <tr>
+        <td>Title &nbsp;</td>
+        <td><input style="width:90%;" type="text" name="title" placeholder="Enter title"/></td>
+    </tr>
+
+    <tr>
+        <td>Category &nbsp;</td>
+        <td>
+            <select onchange="showSubcategory(this.value)" style="width:90%;" name="catnm">
+            <option>Select category</option>
+            {% for c in clist %}
+            <option>{{c.catnm}}</option>
+            {% endfor %}
+             </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Sub Category &nbsp;</td>
+        <td>
+            <select style="width:90%;" id="response" name="subcatnm">
+            <option>Select SubCategory</option>
+            </select>
+        </td>
+    </tr>
+
+    
+    <tr>
+        <td>Base Price &nbsp;</td>
+        <td><input style="width:90%;" type="text" name="baseprice" placeholder="Enter Base Price"/></td>
+    </tr>
+
+    <tr>
+        <td>Description &nbsp;</td>
+        <td><textarea style="width:90%;" name="description" placeholder="Descibe your product"></textarea></td>
+    </tr>
+
+    <tr>
+        <td>Product Icon</td>
+        <td>
+        File 1 : <input type="file" name="file1" required/>
+        <br>
+        File 2 : <input type="file" name="file2"/>
+        <br>
+        File 3 : <input type="file" name="file3"/>
+        <br>
+        File 4 : <input type="file" name="file4"/>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="1">
+        <input type="submit" value="Add Product"/></td>
+    </tr>
+    
+
+</table>
+</form>
+</center>
+{% endblock %}
+
+
+{% block footer %}
+    <footer>
+
+        
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    
+                        <b><strong>
+                    <p class="copyright">Copyright &copy; 2020-2021, Art Gallery </p>
+                        <p>Designed And Developed By: Ajinkya Pradhan</p>
+                    </p>
+                        </strong></b>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </footer>
+{% endblock %}

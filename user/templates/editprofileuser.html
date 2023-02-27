@@ -1,0 +1,88 @@
+{% extends 'userhome.html' %}
+
+{% block header_text %}
+<center>
+<br><br><br><br><br><br><br>
+<h2><strong>Edit your profile here!!!!!!!!</strong></h2>    
+
+<font color="red">{{msg}}</font>
+<form method="POST" action=/user/updateDataUser/ >
+{% csrf_token %}
+<table cellspacing="5" cellpadding="5">
+
+    <br>
+    <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" value="{{userDetails.name}}"/></td>    
+    </tr>
+
+    <tr>
+        <td>Username</td>
+        <td><input type="text" name="username" value="{{userDetails.username}}" readonly/></td>    
+    </tr>
+
+    <tr>
+        <td>Mobile</td>
+        <td><input type="text" name="mobile" value="{{userDetails.mobile}}"/></td>    
+    </tr>
+
+    <tr>
+        <td>Address</td>
+        <td>
+        <textarea cols="25" rows="3" name="address">{{userDetails.address}}</textarea>    
+        </td>    
+    </tr>
+
+    <tr>
+        <td>City</td>
+        <td>
+        <select style="width:100%;" name="city">
+        <option>{{userDetails.city}}</option>
+        <option>Indore</option>
+        <option>Gwalior</option>
+        <option>Jabalpur</option>
+        <option>Dhar</option>
+        <option>Bhopal</option>
+        <option>Ratlam</option>
+        </select>    
+        </td>    
+    </tr>
+    
+    <br>
+    <tr>
+        <td colspan="2">
+        <br>
+        <input type="submit" name="sub" value="Update"/>
+        </td>
+            
+    </tr>
+    
+
+</table>
+</form>
+<center>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+
+        
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    
+                        <b><strong>
+                    <p class="copyright">Copyright &copy; 2020-2021, Art Gallery </p>
+                        <p>Designed And Developed By: Ajinkya Pradhan</p>
+                    </p>
+                        </strong></b>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </footer>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'master_template.html' %}
+
+{% block nav %}
+<ul class="nav">
+<li class="scroll-to-section"><a href="/user/" class="active">User Home</a></li>
+<li class="scroll-to-section"><a href="/user/viewproducts/">View Products</a></li>
+<li class="scroll-to-section"><a href="/user/addproducts/">Add Products</a></li>
+<li class="scroll-to-section"><a href="/user/editprofileuser/">Edit Profile</a></li>
+<li class="scroll-to-section"><a href="/user/changepassworduser/">Change Password</a></li>
+<li class="scroll-to-section"><a href="/login/">Logout</a></li>
+</ul>
+
+<br>  
+<center>  	
+<b>
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Welcome user : {{sunm}}
+
+</b>
+</center>
+
+{% endblock %}
+
+
+{% block header_text %}
+<h3>Welcome to Art Gallery User Panel</h3>
+<br>
+<br>
+<br>
+
+{% endblock %}
+
+{% block header_image %}
+{% endblock %}
+
+{% block footer %}
+    <footer>
+
+        <center>
+         <h4><u>Categories</u></h4>   
+        <div class="col-lg-5 col-md-12 col-sm-12">
+            <ul >
+                <li><a href="/user/subcatviewproducts/?catnm=portrait">@Portraits</a></li>
+                <li><a href="/user/subcatviewproducts/?catnm=painting">@Paintings</a></li>
+                <li><a href="/user/subcatviewproducts/?catnm=sculpture">@Sculptures</a></li>
+                <li><a href="/user/subcatviewproducts/?catnm=canvas">@Canvas</a></li>
+                
+            </ul>
+        </div>
+
+        
+
+        </center>
+        
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    
+                        <b><strong>
+                    <p class="copyright">Copyright &copy; 2020-2021, Art Gallery </p>
+                        <p>Designed And Developed By: Ajinkya Pradhan</p>
+                    </p>
+                        </strong></b>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </footer>
+    {% endblock %}

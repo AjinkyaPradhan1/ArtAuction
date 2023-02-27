@@ -1,0 +1,50 @@
+{% extends 'userhome.html' %}
+
+
+{% block header_text %}
+
+<style>
+
+#category_main
+{
+    min-height:300px;
+    width:300px;
+    
+}
+.category_main_part
+{
+    height:100px;
+    width:100px;
+    
+    float:left;
+}
+
+</style>
+
+<center>
+    <br><br><br><br><br><br><br>
+<h2><strong>Categories to search Bidding Products</strong></h2>
+<br>
+
+<div id="category_main">
+    
+    {% for row in clist %}
+    <a href="/user/subcatviewproducts/?catnm={{row.catnm}}">
+    <div class="category_main_part">
+        <br>
+        
+        <img src="{{media_url}}{{row.caticonnm}}" height="50" width="80"/>
+        <br>
+        <b>{{row.catnm}}</b>
+    </div>
+    </a>
+    {% endfor %}
+    
+</div>
+
+</center>
+{% endblock %}
+
+{% block header_image %}
+
+{% endblock %}
